@@ -1,14 +1,14 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const dotenv = require("dotenv");
+import express from "express";
+import bodyParser from "body-parser";
+import env from "dotenv";
 
-dotenv.config();
 const app = express();
+const port = 3001;
+env.config();
 
-const port = 3000;
-
-app.use(express.json());
+//Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Surf Photo Platform API");
